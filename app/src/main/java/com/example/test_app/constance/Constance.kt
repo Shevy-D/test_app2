@@ -1,4 +1,4 @@
-package com.example.test_app
+package com.example.test_app.constance
 
 object Constance {
     const val DIRECTOR_SALARY = 100000

@@ -1,5 +1,6 @@
 package com.example.test_app
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,5 +19,15 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
+    }
+
+    fun onClickGoTest2(view: View) {
+        val intent = Intent(this, TestActivity2::class.java)
+        startActivity(intent)
+
+    }
+
+    fun onClickClose(view: View) {
+        finish()
     }
 }
