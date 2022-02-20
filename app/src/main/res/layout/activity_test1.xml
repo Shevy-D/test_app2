@@ -7,7 +7,7 @@
     tools:context=".TestActivity1">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TestActivity1"
@@ -21,11 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:onClick="onClickGoMain"
-        android:text="main activity"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        android:onClick="onClickBack"
+        android:text="answer"
+        app:layout_constraintEnd_toEndOf="@+id/tvMessage"
         app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/tvMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tvMessage"
+        app:layout_constraintEnd_toEndOf="@+id/tvMessage"
+        app:layout_constraintStart_toStartOf="@+id/tvMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,15 +19,22 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
-    }
-
-    fun onClickGoTest2(view: View) {
-        val intent = Intent(this, TestActivity2::class.java)
-        startActivity(intent)
+        val message = intent.getStringExtra("key")
+        bindingClass.tvMessageMain.text = message
 
     }
 
-    fun onClickClose(view: View) {
-        finish()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null){
+            bindingClass.tvMessageMain.text = data.getStringExtra("key2")
+        }
+    }
+
+    fun onClickGoTest1(view: View){
+
+        val i = Intent(this, TestActivity1::class.java)
+        i.putExtra("key", "What's your name?")
+        startActivityForResult(i, 100)
     }
 }
