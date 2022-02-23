@@ -2,22 +2,44 @@ package com.example.test_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import com.example.test_app.databinding.ActivityMainBinding
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
-    val lostArray = arrayOf(10000, 2300, 45000, 65000, 6500, 400)
-    val earnArray = arrayOf(15000, 300, 345000, 5000, 16500, 3400)
-    val resultArray = ArrayList<String>()
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val names = resources.getStringArray(R.array.names)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        for ((index, name) in names.withIndex()){
+    }
 
-            resultArray.add("Имя: $name | прибыль = ${earnArray[index] - lostArray[index]}")
-            Log.d("MyLog", "Статистика -/- ${resultArray[index]}")
+    fun onClickResult(view: View) {
+        if (!isFieldEmpty()) {
+            val result = getString(R.string.result_info) + getResult()
+            binding.tvResult.text = result
+
         }
     }
 
+    private fun isFieldEmpty(): Boolean{
+        binding.apply {
+            if (edA.text.isNullOrEmpty()) edA.error = "Поле должно быть заполнено"
+            if (edB.text.isNullOrEmpty()) edB.error = "Поле должно быть заполнено"
+            return edA.text.isNullOrEmpty() || edB.text.isNullOrEmpty()
+        }
+    }
+
+    private fun getResult(): String {
+        val a: Double
+        val b: Double
+        binding.apply {
+            a = edA.text.toString().toDouble()
+            b = edB.text.toString().toDouble()
+        }
+        return sqrt((a.pow(2))+b.pow(2)).toString()
+    }
 }

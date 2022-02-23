@@ -1,14 +1,8 @@
 <resources>
-    <string name="app_name">test_app</string>
-    <string name="ok" translatable="false">OK</string>
-    <string name="hello">Hello</string>
-    <string name="sign_in" translatable="false">Sign In</string>
-    <string name="sign_up" translatable="false">Sign Up</string>
-    <string name="avatar" translatable="false">Avatar</string>
-    <string name="login" translatable="false">Login</string>
-    <string name="password" translatable="false">Password</string>
-    <string name="name" translatable="false">Имя</string>
-    <string name="last_name" translatable="false">Фамилия</string>
-    <string name="second_name" translatable="false">Отчество</string>
-    <string name="done" translatable="false">Готово</string>
+    <string name="app_name" translatable="false">test_app</string>
+    <string name="title" translatable="false">Вычислить "С"</string>
+    <string name="result_info" translatable="false">Результат:&#160;</string>
+    <string name="result" translatable="false">Результат</string>
+    <string name="input_a" translatable="false">Введите значение \"a\":&#160;</string>
+    <string name="input_b" translatable="false">Введите значение \"b\":&#160;</string>
 </resources>
