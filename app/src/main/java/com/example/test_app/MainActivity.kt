@@ -1,45 +1,44 @@
 package com.example.test_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_app.databinding.ActivityMainBinding
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    private val adapter = PlantAdapter()
+    private val imageIdList = listOf(
+        R.drawable.plant1,
+        R.drawable.plant2,
+        R.drawable.plant3,
+        R.drawable.plant4,
+        R.drawable.plant5,)
+    private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        init()
 
     }
 
-    fun onClickResult(view: View) {
-        if (!isFieldEmpty()) {
-            val result = getString(R.string.result_info) + getResult()
-            binding.tvResult.text = result
-
-        }
-    }
-
-    private fun isFieldEmpty(): Boolean{
+    private fun init(){
         binding.apply {
-            if (edA.text.isNullOrEmpty()) edA.error = "Поле должно быть заполнено"
-            if (edB.text.isNullOrEmpty()) edB.error = "Поле должно быть заполнено"
-            return edA.text.isNullOrEmpty() || edB.text.isNullOrEmpty()
+            rcView.layoutManager = GridLayoutManager(this@MainActivity, 3)
+            rcView.adapter = adapter
+            buttonAdd.setOnClickListener {
+                if (index > 4) index = 0
+                val plant = Plant(imageIdList[index], "Plant $index")
+                adapter.addPlant(plant)
+                index++
+            }
         }
-    }
-
-    private fun getResult(): String {
-        val a: Double
-        val b: Double
-        binding.apply {
-            a = edA.text.toString().toDouble()
-            b = edB.text.toString().toDouble()
-        }
-        return sqrt((a.pow(2))+b.pow(2)).toString()
     }
 }
